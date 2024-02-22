@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://86bp0k7f22ej"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lfm3e"]
+size = Vector2(20, 20)
+
+[sub_resource type="Skin" id="Skin_0qx0w"]
+
+[node name="floor" type="MeshInstance3D"]
+mesh = SubResource("PlaneMesh_lfm3e")
+skin = SubResource("Skin_0qx0w")
