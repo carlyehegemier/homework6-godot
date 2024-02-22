@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://86bp0k7f22ej"]
+[gd_scene load_steps=4 format=3 uid="uid://86bp0k7f22ej"]
+
+[ext_resource type="PackedScene" uid="uid://bt6jrg7m43bcp" path="res://homework6-godot/kitchen_cabinets/scene.gltf" id="1_0jafc"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lfm3e"]
 size = Vector2(20, 20)
@@ -8,3 +10,6 @@ size = Vector2(20, 20)
 [node name="floor" type="MeshInstance3D"]
 mesh = SubResource("PlaneMesh_lfm3e")
 skin = SubResource("Skin_0qx0w")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_0jafc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)

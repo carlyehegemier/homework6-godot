@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://cavk1lj12ot4h"]
+
+[ext_resource type="PackedScene" uid="uid://bt6jrg7m43bcp" path="res://homework6-godot/kitchen_cabinets/scene.gltf" id="1_q82hh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pmrou"]
+sky_top_color = Color(0.4, 0.380392, 0.803922, 1)
+sky_horizon_color = Color(0.844118, 0.810784, 0.929412, 1)
+ground_bottom_color = Color(0.976471, 0.862745, 0.913725, 1)
+ground_horizon_color = Color(0.844118, 0.810784, 0.929412, 1)
+
+[sub_resource type="Sky" id="Sky_y0wyb"]
+sky_material = SubResource("ProceduralSkyMaterial_pmrou")
+
+[sub_resource type="Environment" id="Environment_nddar"]
+background_mode = 2
+sky = SubResource("Sky_y0wyb")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6hie3"]
+vertex_color_is_srgb = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6j2ac"]
+material = SubResource("StandardMaterial3D_6hie3")
+size = Vector2(40, 40)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_55vvp"]
+data = PackedVector3Array(20, 0, 20, -20, 0, 20, 20, 0, -20, -20, 0, 20, -20, 0, -20, 20, 0, -20)
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_q82hh")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_nddar")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="floor" type="MeshInstance3D" parent="Sketchfab_model" index="1"]
+transform = Transform3D(-0.998738, 1.11526e-17, 0.0502269, -1.11526e-17, 1, -4.43809e-16, -0.0502269, -4.43809e-16, -0.998738, 18.616, 34, -12.1991)
+mesh = SubResource("PlaneMesh_6j2ac")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/floor" index="0"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_model/floor/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_55vvp")
+
+[node name="Camera3D" type="Camera3D" parent="Sketchfab_model/floor" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+doppler_tracking = 1
+projection = 2
