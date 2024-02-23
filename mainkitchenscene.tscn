@@ -49,7 +49,5 @@ axis_lock_linear_z = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_model/floor/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_55vvp")
 
-[node name="Camera3D" type="Camera3D" parent="Sketchfab_model/floor" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-doppler_tracking = 1
-projection = 2
+[node name="Camera3D" type="Camera3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 47, -48)
